@@ -9,6 +9,7 @@
     <name>wechat</name>
     <modules>
         <module>wechat-web</module>
+        <module>wechat-service</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>

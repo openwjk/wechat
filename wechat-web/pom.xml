@@ -7,11 +7,7 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
     <name>wechat-web</name>
-    <parent>
-        <artifactId>wechat</artifactId>
-        <groupId>com.openwjk</groupId>
-        <version>0.0.1-SNAPSHOT</version>
-    </parent>
+
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
