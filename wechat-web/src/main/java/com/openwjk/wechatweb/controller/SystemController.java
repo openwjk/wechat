@@ -25,25 +25,16 @@ public class SystemController {
     SystemService systemService;
 
     @GetMapping
-    public void wechat(HttpServletRequest request, HttpServletResponse response) {
+    public String wechat(HttpServletRequest request) {
         String signature = request.getParameter("signature");
         String timestamp = request.getParameter("timestamp");
         String nonce = request.getParameter("nonce");
         String echostr = request.getParameter("echostr");
         log.info("signature: {} nonce: {} echostr: {} timestamp: {}", signature, nonce, echostr, timestamp);
         if (systemService.checkSignature(signature,timestamp,nonce)) {
-            log.info("数据源为微信后台，将echostr[{}]返回！", echostr);
-            BufferedOutputStream out = null;
-            try {
-                out = new BufferedOutputStream(response.getOutputStream());
-                out.write(echostr.getBytes());
-                out.flush();
-                out.close();
-            } catch (IOException e) {
-                log.error("校验出错");
-                log.error(StackTraceUtil.getStackTrace(e));
-            }
+            return echostr;
         }
+        return "success.";
     }
 
     @GetMapping("/check.htm")
